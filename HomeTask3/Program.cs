@@ -16,31 +16,24 @@ void PrintArray(double[] array)
     }
 }
 PrintArray(array);
-double MaxNumber(double[] array)
+double MaxAndMinNumber(double[] array)
 {
-    double index = 0;
+    double Max = 0;
+    double Min = array[0];
     for (int i = 0; i < array.Length; i++)
     {
-        if (index <= array[i])
+        if (Max < array[i])
         {
-            index = array[i];
+            Max = array[i];
+        }
+        if (Min > array[i])
+        {
+            Min = array[i];
         }
     }
-    return index;
+    System.Console.WriteLine("\n Max " + Max);
+    System.Console.WriteLine("\n Min " + Min);
+    return Max - Min;
 }
-double MinNumber(double[] array)
-{
-    double index = array[0];
-    for (int i = 0; i < array.Length; i++)
-    {
-        if (index >= array[i])
-        {
-            index = array[i];
-            index++;
+System.Console.WriteLine($"\n ===> {MaxAndMinNumber(array)}");
 
-        }
-    }
-    return index - 1;             //  я так и не разобрался с этим моментом откуда он берет единицу в ответ,
-}                                 // поэтому пришлось эту единицу у него и забирать. :/
-
-System.Console.WriteLine($" ==> {MaxNumber(array)} - {MinNumber(array)} = ");
